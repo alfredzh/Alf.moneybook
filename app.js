@@ -19,7 +19,6 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.session({secure:'oo'}));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
