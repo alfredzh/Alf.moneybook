@@ -4,10 +4,12 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
+  , controller = require('./controller')
+  , record = require('./controller/record')
+  //, user = require('./routes/user')
   , http = require('http')
   , path = require('path');
+  //, rainbow = require('rainbow');
 
 var app = express();
 
@@ -32,8 +34,15 @@ if ('production' == app.get('env')) {
   
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+console.log('\033[91m' + 'hello' + '\033[39m' + ' world');
+
+/*rainbow.route(app,{
+	controller:'/controller/'
+})*/
+
+app.get('/', controller.index);
+app.get('/record', record.record);
+//app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
